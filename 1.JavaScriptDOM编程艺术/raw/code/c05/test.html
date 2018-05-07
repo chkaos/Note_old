@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>popup</title>
+	<script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+	<h1>平稳退化</h1>
+	<a href="javascript:popUp('http://www.google.com');">Example</a>
+	<!-- 通过“JavaScript：”伪协议调用popUp()函数 -->
+	<a href="#" onclick="popUp('http://www.google.com'); return false">Example2</a>
+	<a class="popup" href="http://www.google.com" onclick="popUp(this.href); return false">Example3</a>
+	<ul>
+		<li>尽量减少访问DOM和尽量减少标记</li>
+		<li>合并和放置脚本</li>
+		<li>压缩脚本</li>
+		<li></li>
+	</ul>
+</body>
+</html>

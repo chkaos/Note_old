@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Example</title>
+	<style type="text/css">
+		.intro {
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var para = document.getElementById("example");
+			// alert(typeof para.nodeName);
+			// alert(typeof para.style);
+			// alert("The color is " + para.style.color);
+			// // css属性中的连字符一律用DOM驼峰式书写替代；
+			// alert("The font family is " + para.style.fontFamily);
+			// alert("The font size is " + para.style.fontSize);
+			para.style.color = "black";
+			para.style.font = "2em 'Times', serif"
+		}
+	</script>
+</head>
+<body>
+	<p id="example" style="color: grey; font-family: 'Arial', sans-serif; font-size: 1em;">An example of an paragraph</p>
+	<h1>Style</h1>
+	<p>DOM style 属性不能用于检索在外部CSS文件或&lt;style&gt里声明的样式</p>
+	<p>P3</p>
+	<script type="text/javascript" src="scripts/addLoadEvent.js"></script>
+	<script type="text/javascript" src="scripts/styleHeaderSiblings.js"></script>
+</body>
+</html>

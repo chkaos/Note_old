@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Shopping list</title>
+	<style type="text/css">
+		body{
+			color: white;
+			background: black;
+		}
+		p {
+			color: yellow;
+			font-family: "arial", sans-serif;
+			font-size: 1.2em;
+		}
+		#purchases {
+			border: 1px solid white;
+			background: #333;
+			color: #ccc;
+			padding: 1em;
+		}
+		#purchases li {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Want to buy</h1>
+	<p title="a gentle reminder">Don't forget to buy this stuff.</p>
+	<p>This is just a test.</p>
+	<ul id="purchases">
+		<li>A tin of beans</li>
+		<li class="sale">Cheese</li>
+		<li class="sale important" >Milk</li>
+	</ul>
+
+	<script type="text/javascript">
+		var shopping = document.getElementById("purchases")
+		console.log(typeof shopping);
+
+
+		var lis = document.getElementsByTagName("li");
+		console.log("Length of lis is " + lis.length);
+		for (var i=0; i<lis.length; i++){
+			console.log(lis[i]);
+		}
+		console.log("元素节点总数： " + document.getElementsByTagName("*").length);
+		var items = shopping.getElementsByTagName("*")
+		console.log(items.length);
+
+
+		var sales = shopping.getElementsByClassName("sale");
+		console.log(sales.length);
+		//getElementsByClassName 不支持IE8之前的浏览器；使用已有的DOM来支持该函数：
+		function getElementsByClassName(node, classname){
+			if(node.getElementsByClassName){
+				//使用现有方法
+				return node.getElementsByClassName(classname);
+			} else {
+				var results = new Array();						//创建新数组results用于接收结果
+				var elems = node.get ElementsByTagName("*");		//找到该搜索起点包含的所有元素节点；
+				for (i=0; i<elems.length; i++){					//遍历所有元素节点，如果元素节点的class包含该classname,则添加到数组results中；
+					if(elems[i].classname.indexOf(classname) != -1){
+						results[results.length] = elems[i];
+					}
+				}
+				return results;
+			}
+				//不适用于多个类名；
+		}
+
+		var paras = document.getElementsByTagName("p");
+		// for (var i=0; i < paras.length; i++) {
+		// 	alert(paras[i].getAttribute("title"));
+		// }  无属性的P元素会显示null，以下为改进方案；
+		for (var i=0; i < paras.length; i++) {
+			var title_text = paras[i].getAttribute("title");
+			if(title_text) alert(title_text);
+		}
+
+		alert(shopping.getAttribute("title"));
+		shopping.setAttribute("title", "a list of goods");
+		alert(shopping.getAttribute("title"));
+
+		for (var i=0; i < paras.length; i++) {
+			var title_text = paras[i].getAttribute("title");
+			if(title_text) {
+				paras[i].setAttribute("title", "brand new title text");
+				alert(paras[i].getAttribute("title"));
+			} 
+		}
+
+		//DOM的工作模式：先加载文档的静态内容再动态更新，动态刷新不影响文档的静态内容。
+	</script>
+</body>
+</html>
